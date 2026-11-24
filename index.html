@@ -184,7 +184,7 @@ dialog.lb .x{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <filter id="ink" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter>
 </defs></svg>
-<a class="skip" href="#photography">Skip to work</a>
+<a class="skip" href="#brands">Skip to work</a>
 <a class="talk" href="#contact">Contact</a>
 
 <header class="hero" id="top">
@@ -209,10 +209,10 @@ dialog.lb .x{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0
   <svg class="strings" id="strings" aria-hidden="true"></svg>
 
   <div class="anns">
-    <a class="ann a1" href="#photography"><b>Photography</b><span>Product, campaign and brand shoots</span><svg class="arr" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 62C22 20 52 10 82 14"/><path d="M70 4l13 10-12 9"/></svg></a>
-    <a class="ann a2" href="#video"><b>Video</b><span>Shoots, edits and reels for brands</span><svg class="arr" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 62C22 20 52 10 82 14"/><path d="M70 4l13 10-12 9"/></svg></a>
-    <a class="ann a3" href="#projects"><b>Websites and projects</b><span>Sites I built, software from my degree</span><svg class="arr" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 62C22 20 52 10 82 14"/><path d="M70 4l13 10-12 9"/></svg></a>
-    <a class="ann a4" href="#about"><b>About me</b><span>Computer Science, BRAC University</span><svg class="arr" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 62C22 20 52 10 82 14"/><path d="M70 4l13 10-12 9"/></svg></a>
+    <a class="ann a1" href="#brands"><b>Brands</b><span>Photos, video and social for brands</span><svg class="arr" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 62C22 20 52 10 82 14"/><path d="M70 4l13 10-12 9"/></svg></a>
+    <a class="ann a2" href="#projects"><b>Projects</b><span>Websites and software I built</span><svg class="arr" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 62C22 20 52 10 82 14"/><path d="M70 4l13 10-12 9"/></svg></a>
+    <a class="ann a3" href="#about"><b>About me</b><span>Computer Science, BRAC University</span><svg class="arr" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 62C22 20 52 10 82 14"/><path d="M70 4l13 10-12 9"/></svg></a>
+    <a class="ann a4" href="#contact"><b>Contact</b><span>WhatsApp, email and Instagram</span><svg class="arr" viewBox="0 0 90 70" aria-hidden="true"><path d="M6 62C22 20 52 10 82 14"/><path d="M70 4l13 10-12 9"/></svg></a>
   </div>
 
   <div class="hns" id="hns"></div>
@@ -220,14 +220,9 @@ dialog.lb .x{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0
 </header>
 
 <main id="main">
-  <section class="board" id="photography"><div class="wrap">
-    <div class="bh rv"><h2>Photography</h2><p>Tap a brand to see its photos.</p></div>
-    <div class="cards" id="cards-photo"></div>
-  </div></section>
-
-  <section class="board" id="video"><div class="wrap">
-    <div class="bh rv"><h2>Video</h2><p>Tap a brand to see its videos.</p></div>
-    <div class="cards" id="cards-video"></div>
+  <section class="board" id="brands"><div class="wrap">
+    <div class="bh rv"><h2>Brands</h2><p>Tap a brand to see its work.</p></div>
+    <div class="cards" id="cards"></div>
   </div></section>
 
   <section class="board" id="sites"><div class="wrap">
@@ -241,10 +236,12 @@ dialog.lb .x{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0
   </div></section>
 
   <section class="board" id="about"><div class="wrap">
+    <div class="bh rv"><h2>About me</h2></div>
     <div class="about">
       <a class="note rv" style="--r:-3deg;--c:var(--yellow)" href="https://github.com/JawadMgm" target="_blank" rel="noopener"><i class="pin"></i><b>Mahir Jawad</b><span>Dhaka, Bangladesh</span><span>Freelance content creator</span></a>
       <div class="rv">
-        <p>I studied Computer Science at BRAC University and work as a freelance content creator. I plan, shoot and post content for brands, manage their social media, and build the websites they need.</p>
+        <p>I graduated from BRAC University with a degree in Computer Science.</p>
+        <p>Now I work with different brands on all kinds of projects. I manage their social media, create their content, shoot their photos and videos, and build their websites.</p>
         <p>Trivents and Forever Favors are current clients.</p>
         <div class="links"><a href="https://www.instagram.com/_mahirjawad_/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/jawadmahir" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/JawadMgm" target="_blank" rel="noopener">GitHub</a></div>
       </div>
@@ -362,11 +359,10 @@ function strings() {
 addEventListener("resize", strings); strings(); document.fonts && document.fonts.ready.then(strings);
 
 /* brand cards on the boards */
-const card = (b, kind, i) => `<button class="card rv ${b.c}" style="--r:${rot(i)}deg" data-brand="${b.id}" data-cat="${kind}" aria-label="${esc(b.name)}, open ${kind === "photo" ? "photos" : "videos"}">
+const card = (b, i) => `<button class="card rv ${b.c}" style="--r:${rot(i)}deg" data-brand="${b.id}" aria-label="${esc(b.name)}, see the work">
   <i class="tape" aria-hidden="true"></i><div><h3 translate="no">${esc(b.name)}</h3>${b.role ? `<div class="r">${esc(b.role)}</div>` : ""}</div>
-  <span class="open">${kind === "photo" ? "See photos" : "See videos"} ${arrow}</span></button>`;
-$("#cards-photo").innerHTML = BRANDS.map((b, i) => card(b, "photo", i)).join("");
-$("#cards-video").innerHTML = BRANDS.map((b, i) => card(b, "video", i + 3)).join("");
+  <span class="open">${b.status === "progress" ? "In progress" : "See the work"} ${arrow}</span></button>`;
+$("#cards").innerHTML = BRANDS.map((b, i) => card(b, i)).join("");
 
 /* websites + projects */
 if (SITES.some(s => s.src)) {
@@ -394,7 +390,7 @@ function openBrand(id, cat) {
   sh.innerHTML = `<button class="back" id="back">Back to the wall</button>
     <h2 translate="no">${esc(b.name)}</h2>
     <p class="meta">${esc([b.role, b.year].filter(Boolean).join(" · "))}${b.blurb ? `<br>${esc(b.blurb)}` : ""}</p>
-    ${b.link ? `<a class="igbtn" href="${esc(b.link)}" target="_blank" rel="noopener">See ${esc(b.name)} on Instagram</a>` : ""}` + body;
+    ${b.link ? `<a class="igbtn" href="${esc(b.link)}" target="_blank" rel="noopener">See ${esc(b.name)} on Instagram</a>` : ""}` + (body || (b.link ? "" : `<div class="empty">No work from ${esc(b.name)} is pinned here yet.</div>`));
   sheet.showModal(); sheet.scrollTop = 0;
   $("#back").onclick = () => sheet.close();
 }
